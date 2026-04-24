@@ -5,7 +5,7 @@
 Created by:  SAGAR RAVAL 
  ||  email: saagar.raval@gmail.com  ||  +91 9824969150
 
-<img width="2062" height="588" alt="CS water mark" src="https://github.com/user-attachments/assets/f4f531f0-5b9a-497a-a4d1-a819c03bf734" />
+<img width="252" height="81" alt="CS water mark" src="https://github.com/user-attachments/assets/f4f531f0-5b9a-497a-a4d1-a819c03bf734" />
 
 A streaming AI chatbot Android app built as a clean, demo-ready reference
 implementation. The UI and streaming behaviour are wrapped around a strict
