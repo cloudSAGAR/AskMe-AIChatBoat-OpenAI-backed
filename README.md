@@ -7,6 +7,18 @@ by changing a single file.
 
 ---
 
+https://github.com/user-attachments/assets/ef57b26b-a570-4d9c-ae33-0fb6ed97d312
+
+-----------
+
+https://github.com/user-attachments/assets/bf734d10-19b0-4563-83b4-507d41c0f425
+
+----------
+
+https://github.com/user-attachments/assets/bf4f36cd-9b0c-43ea-a4c7-2e8a020cc737
+
+
+
 ## 🚀 Quick Start — get an API key, paste, run
 
 The app ships with three swappable providers. Default is **Groq** because it's
