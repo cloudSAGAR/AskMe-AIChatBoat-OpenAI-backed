@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_chat_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_chat_root"
+        android:clickable="true"
+        android:focusable="true"
+        tools:context=".chat.ChatBoatFragment">
+
+        <!-- Chat intro info text – visible only when chat is empty -->
+        <!--
+            Empty-state hero — visible only when the conversation is empty.
+            Title, subtitle and footnote stack vertically with generous
+            horizontal padding for a calm, uncluttered first impression.
+        -->
+        <LinearLayout
+            android:id="@+id/tv_chat_intro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="28dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/includeToolbar">
+
+            <!--
+                Animated AI sparkle. Rotation + scale pulse are driven from
+                the Fragment so the resource stays declarative.
+            -->
+            <ImageView
+                android:id="@+id/iv_intro_sparkle"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@string/chat_title"
+                android:src="@drawable/ic_ai_sparkle" />
+
+            <!--
+                Gradient title — shader animates horizontally for the
+                classic AI-assistant title look.
+            -->
+            <com.example.askmechat.presentation.chat.widget.AnimatedGradientTextView
+                android:id="@+id/tv_chat_intro_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:letterSpacing="0.01"
+                android:text="@string/chat_intro_title"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_chat_intro_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:lineSpacingExtra="3dp"
+                android:text="@string/chat_intro_subtitle"
+                android:textColor="#B8B8C7"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_chat_intro_footnote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:alpha="0.75"
+                android:gravity="center"
+                android:text="@string/chat_intro_footnote"
+                android:textColor="#8C8CA0"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+        <!-- Chat Messages RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_chat_messages"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingStart="3dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="20dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toTopOf="@id/ll_chat_bottom_panel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/includeToolbar"
+            tools:listitem="@layout/item_chat_user" />
+
+        <!-- Background gradient behind toolbar (taller now to cover the
+             status-bar safe area plus the new 20dp breathing room). -->
+        <View
+            android:id="@+id/view_toolbar_gradient_bg"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:background="@drawable/bg_chat_toolbar_gradient"
+            android:rotation="180"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Toolbar height is driven by the included layout's paddings so
+             the close-button and title always sit ~20dp below the status
+             bar regardless of notch shape. -->
+        <include
+            android:id="@+id/includeToolbar"
+            layout="@layout/toolbar_chat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--
+            The footer gradient now lives on `ll_chat_bottom_panel` itself
+            (with generous top padding so the fade has room to breathe).
+            The standalone `view_footer_gradient_bg` View was removed —
+            duplicating the gradient under the panel made it darker than
+            intended and didn't buy any extra fade.
+        -->
+
+        <!--
+            Suggestion chips — top-level sibling, vertically centered
+            between the hero and the bottom panel (vertical_bias=0.5).
+            Kept out of ll_chat_bottom_panel on purpose so that the
+            keyboard-inset translation on the bottom panel doesn't drag
+            the chip strip upward with it. Chips stay pinned where the
+            layout placed them; the input slides over them.
+            FlexboxLayoutManager is attached in the Fragment so chips
+            wrap into multiple rows instead of being clipped.
+        -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_suggestion_chips"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="8dp"
+            app:layout_constraintBottom_toTopOf="@id/ll_chat_bottom_panel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_chat_intro"
+            app:layout_constraintVertical_bias="0.5"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_suggestion_chip" />
+
+        <!-- Bottom Panel: holds suggestion chips + map points + input wrapper -->
+        <!--
+            Bottom panel — hosts the input + optional progress/map rows.
+            The background uses `bg_chat_footer_gradient` (transparent at
+            the top → solid #161E2A at the bottom). The big paddingTop
+            (56dp) gives that gradient a real fade zone above the input so
+            when the keyboard pushes this panel upward, the top half of it
+            smoothly blends the chip strip sitting behind it into darkness
+            instead of abruptly overlapping.
+        -->
+        <LinearLayout
+            android:id="@+id/ll_chat_bottom_panel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chat_footer_gradient"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingTop="56dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <!-- Progress bar shown while waiting for API response (hidden by default, drives dots loading) -->
+            <LinearLayout
+                android:id="@+id/ll_progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingTop="28dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="4dp"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:id="@+id/pb_response"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:indeterminateTint="@color/white" />
+
+                <TextView
+                    android:id="@+id/tv_progress_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Thinking…"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <!-- Map view points RecyclerView shown after response completes -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_mapview_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="2dp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingStart="5dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="1dp"
+                android:visibility="gone"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_map_point" />
+
+            <!-- Input Wrapper -->
+            <FrameLayout
+                android:id="@+id/input_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="24dp">
+
+                <!-- Input Container -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/input_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="14dp"
+                    android:background="@drawable/bg_input_container"
+                    android:padding="12dp">
+
+                    <EditText
+                        android:id="@+id/et_message_input"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:background="@null"
+                        android:hint="@string/ask_hint"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:maxLines="4"
+                        android:paddingStart="9dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="5dp"
+                        android:paddingBottom="6dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/calendar_divider"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/iv_send"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_send"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_send_button"
+                        android:contentDescription="@string/send"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_send"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/send_button_tint" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

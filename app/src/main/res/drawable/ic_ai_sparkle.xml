@@ -1,0 +1,35 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="56dp"
+    android:height="56dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Large 4-point sparkle -->
+    <path
+        android:pathData="M32,4 L36,26 L58,30 L36,34 L32,56 L28,34 L6,30 L28,26 Z">
+        <aapt:attr xmlns:aapt="http://schemas.android.com/aapt" name="android:fillColor">
+            <gradient
+                android:startX="0"
+                android:startY="0"
+                android:endX="64"
+                android:endY="64"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#BB43FF" />
+                <item android:offset="0.5" android:color="#9D2AED" />
+                <item android:offset="1.0" android:color="#5A7DFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Small accent sparkle, top-right -->
+    <path
+        android:pathData="M50,10 L52,16 L58,18 L52,20 L50,26 L48,20 L42,18 L48,16 Z"
+        android:fillColor="#E5C9FF"
+        android:fillAlpha="0.85" />
+
+    <!-- Tiny accent sparkle, bottom-left -->
+    <path
+        android:pathData="M12,44 L13.5,48 L17.5,49.5 L13.5,51 L12,55 L10.5,51 L6.5,49.5 L10.5,48 Z"
+        android:fillColor="#E5C9FF"
+        android:fillAlpha="0.7" />
+</vector>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    </data>
+
+    <!--
+        Header container.
+        We reserve ~24dp at the top for the status bar / camera notch and a
+        further 20dp so the title/close-button sit comfortably below it.
+        fitsSystemWindows=false on purpose — the status-bar inset is baked
+        into paddingTop so the whole block is predictable across devices.
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_toolbar_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingTop="44dp"
+        android:paddingBottom="12dp">
+
+        <!--
+            Close button stays vertically centered on the title — NOT on
+            the brand logo below. The logo is smaller branding and should
+            not affect the close-button's resting position.
+        -->
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/close"
+            android:padding="8dp"
+            android:src="@drawable/ic_close"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_title" />
+
+        <!--
+            Main title — bumped from 20sp to 23sp (+15%) for a more
+            confident display look. Gradient shader animation continues
+            to run horizontally across the glyphs.
+        -->
+        <com.example.askmechat.presentation.chat.widget.AnimatedGradientTextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.03"
+            android:text="@string/chat_title"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--
+            Brand sub-logo stacked directly beneath the title. Two lines —
+            "Cloud SAGAR" in white medium weight, "GIT PROJECTS" in a
+            muted grey with wide letter-spacing — matches the uploaded
+            logo as a typography-only rendering so it stays crisp at any
+            density and themes naturally with the rest of the app.
+        -->
+        <LinearLayout
+            android:id="@+id/ll_brand_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+            <TextView
+                android:id="@+id/tv_brand_line_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.04"
+                android:text="@string/brand_logo_line_1"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_brand_line_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:letterSpacing="0.32"
+                android:text="@string/brand_logo_line_2"
+                android:textColor="#8C8CA0"
+                android:textSize="8sp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

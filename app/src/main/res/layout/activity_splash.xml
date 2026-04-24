@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_chat_root"
+    tools:context=".presentation.splash.SplashActivity">
+
+    <!--
+        Center stack: sparkle → title → tagline → dots loader.
+        All four fade / slide in with a staggered delay from the Activity.
+        The sparkle independently rotates + breathes for life while the
+        title's gradient sweeps horizontally.
+    -->
+    <ImageView
+        android:id="@+id/iv_sparkle"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:contentDescription="@string/chat_title"
+        android:src="@drawable/ic_ai_sparkle"
+        app:layout_constraintBottom_toTopOf="@+id/tv_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.example.askmechat.presentation.chat.widget.AnimatedGradientTextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:letterSpacing="0.03"
+        android:text="@string/chat_title"
+        android:textColor="@color/white"
+        android:textSize="46sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_tagline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_sparkle" />
+
+    <TextView
+        android:id="@+id/tv_tagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:letterSpacing="0.04"
+        android:text="@string/splash_tagline"
+        android:textColor="#B8B8C7"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/dots_loading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+    <com.example.askmechat.presentation.chat.widget.DotsLoadingView
+        android:id="@+id/dots_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:alpha="0.85"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tagline" />
+
+    <!-- Divider line above the brand watermark — very subtle -->
+    <View
+        android:id="@+id/divider_brand"
+        android:layout_width="80dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="18dp"
+        android:alpha="0.35"
+        android:background="@color/suggestion_bg"
+        app:layout_constraintBottom_toTopOf="@+id/ll_brand_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--
+        Bottom watermark — "Cloud SAGAR" headline + "GIT PROJECTS" in
+        muted grey with wide letter-spacing. Matches the branding added
+        to the toolbar so the identity carries across both screens.
+    -->
+    <LinearLayout
+        android:id="@+id/ll_brand_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tv_brand_line_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.06"
+            android:text="@string/brand_logo_line_1"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/tv_brand_line_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:letterSpacing="0.42"
+            android:text="@string/brand_logo_line_2"
+            android:textColor="#8C8CA0"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

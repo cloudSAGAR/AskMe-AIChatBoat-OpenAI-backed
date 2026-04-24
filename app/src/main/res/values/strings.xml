@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AskMeChat</string>
+
+    <!-- Chat feature strings -->
+    <string name="chat_title">AskMe AI</string>
+    <string name="brand_logo_line_1">Cloud SAGAR</string>
+    <string name="brand_logo_line_2">GIT PROJECTS</string>
+
+    <!-- Splash screen strings -->
+    <string name="splash_tagline">Your on-demand AI companion</string>
+    <string name="splash_version_prefix">v</string>
+    <string name="ask_hint">Ask me anything…</string>
+    <string name="send">Send</string>
+    <string name="close">Close</string>
+
+    <!-- Empty-state hero (shown above the suggestion chips when the chat
+         list is empty). Title is the warm hello; subtitle explains the
+         range of things the assistant can help with. -->
+    <string name="chat_intro_title">Hey there 👋 I\'m AskMe</string>
+    <string name="chat_intro_subtitle">Your on-demand AI companion — ask me about places to eat, trip ideas, quick facts, tricky code, a song recommendation… anything at all.</string>
+    <string name="chat_intro_footnote">Try one of the suggestions below, or just type what\'s on your mind.</string>
+</resources>

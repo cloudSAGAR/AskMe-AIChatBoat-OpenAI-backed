@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Chat feature palette -->
+    <color name="chat_bg">#0D1520</color>
+    <color name="chat_bg_top">#191D2E</color>
+    <color name="grey_bg_ai_bubble">#2B323D</color>
+    <color name="bubble_user_purple">#8C1BE4</color>
+    <color name="calendar_divider">#A3A3AD</color>
+    <color name="suggestion_color">#9891A4</color>
+    <color name="suggestion_bg">#2C3740</color>
+    <color name="suggestion_text_disabled">#455159</color>
+    <color name="chat_hint_disabled">#666666</color>
+    <color name="send_button_tint">#FFFFFF</color>
+    <color name="color_dot">#A263FE</color>
+    <color name="map_point_subtitle">#B8B8C7</color>
+</resources>

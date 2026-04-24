@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        The Chat screen needs an AppCompat / Material parent because it hosts
+        Fragments and uses ?attr/selectableItemBackground. Keep NoActionBar so
+        the custom toolbar (toolbar_chat.xml) owns the top of the screen.
+    -->
+    <style name="Theme.AskMeChat" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/chat_bg_top</item>
+        <item name="android:windowBackground">@color/chat_bg</item>
+        <item name="colorPrimary">@color/bubble_user_purple</item>
+        <item name="colorPrimaryDark">@color/chat_bg_top</item>
+        <item name="colorAccent">@color/bubble_user_purple</item>
+    </style>
+
+    <!--
+        Splash-specific theme. Uses the chat root gradient as the window
+        background so there is zero flash during cold start — the splash
+        Activity's content just fades in on top of it.
+    -->
+    <style name="Theme.AskMeChat.Splash" parent="Theme.AskMeChat">
+        <item name="android:windowBackground">@drawable/bg_chat_root</item>
+        <item name="android:statusBarColor">@color/chat_bg</item>
+        <item name="android:navigationBarColor">@color/chat_bg</item>
+    </style>
+</resources>
