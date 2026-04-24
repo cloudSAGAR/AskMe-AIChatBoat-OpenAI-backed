@@ -1,5 +1,12 @@
 # AskMeChat
 
+-----------------------
+-----------
+Created by: SAGAR RAVAL 
+email: saagar.raval@gmail.com
+
+<img width="2062" height="588" alt="CS water mark" src="https://github.com/user-attachments/assets/f4f531f0-5b9a-497a-a4d1-a819c03bf734" />
+
 A streaming AI chatbot Android app built as a clean, demo-ready reference
 implementation. The UI and streaming behaviour are wrapped around a strict
 Clean Architecture boundary so the app can be extended to any AI provider
@@ -107,7 +114,7 @@ untouched — that's the Clean Architecture payoff.
 
 -----------
 
-https://github.com/user-attachments/assets/ef57b26b-a570-4d9c-ae33-0fb6ed97d312
+https://github.com/user-attachments/assets/d9740295-ab40-478e-88fa-49863cf76ac3
 
 -----------
 
@@ -501,3 +508,12 @@ full JSON survives. Successful streams only log headers to preserve
 the streaming behaviour.
 
 # AskMe-AIChatBoat-OpenAI-backed
+
+-----------------------
+-----------
+Created by: SAGAR RAVAL 
+email: saagar.raval@gmail.com
++91 9824969160
+
+<img width="2062" height="588" alt="CS water mark" src="https://github.com/user-attachments/assets/d350f217-38b8-41b7-a33d-6dff4e2a3ebf" />
+
