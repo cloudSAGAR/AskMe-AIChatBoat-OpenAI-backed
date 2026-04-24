@@ -12,8 +12,8 @@ implementation. The UI and streaming behaviour are wrapped around a strict
 Clean Architecture boundary so the app can be extended to any AI provider
 by changing a single file.
 
-<img width="200" height="695" alt="Splash" src="https://github.com/user-attachments/assets/8ede473e-ca35-45ed-8a37-7968480290c8" />
-<img width="200" height="695" alt="Home" src="https://github.com/user-attachments/assets/1360de9b-da59-4fa6-91b9-de5fa6d9e939" />
+<img width="300" height="555" alt="Splash" src="https://github.com/user-attachments/assets/8ede473e-ca35-45ed-8a37-7968480290c8" />
+<img width="300" height="555" alt="Home" src="https://github.com/user-attachments/assets/1360de9b-da59-4fa6-91b9-de5fa6d9e939" />
 
 ## 🚀 OUTPUT :
 <img width="400" height="895" alt="Chat" src="https://github.com/user-attachments/assets/a8243552-1928-4692-9920-74fd8f02a096" />
