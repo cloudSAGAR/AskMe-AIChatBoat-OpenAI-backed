@@ -13,109 +13,9 @@ by changing a single file.
 
 <img width="300" height="625" alt="Splash" src="https://github.com/user-attachments/assets/8ede473e-ca35-45ed-8a37-7968480290c8" />
 <img width="300" height="625" alt="Home" src="https://github.com/user-attachments/assets/1360de9b-da59-4fa6-91b9-de5fa6d9e939" />
-<img width="300" height="625" alt="Chat" src="https://github.com/user-attachments/assets/a8243552-1928-4692-9920-74fd8f02a096" />
+<img width="380" height="785" alt="Chat" src="https://github.com/user-attachments/assets/a8243552-1928-4692-9920-74fd8f02a096" />
 
-
------------
-
-## 🚀 Quick Start — get an API key, paste, run
-
-The app ships with three swappable providers. Default is **Groq** because it's
-the fastest path to a working demo — truly free, no credit card, works
-everywhere. Follow the three-minute setup for your preferred provider, then
-rebuild.
-
-### Option A — Groq (recommended, default) ⭐
-
-1. Open **https://console.groq.com/keys**
-2. Sign in with **Google, GitHub or email** — no card needed.
-3. Click **Create API Key** → give it a name → **copy the key** (starts with `gsk_…`).
-4. Paste it into `app/src/main/java/com/example/askmechat/data/remote/groq/GroqConfig.kt`:
-
-   ```kotlin
-   const val API_KEY: String = "gsk_…your key here…"
-   const val MODEL_NAME: String = "llama-3.3-70b-versatile"   // or llama-3.1-8b-instant, gemma2-9b-it
-   ```
-
-5. Rebuild and run. The first prompt streams from Llama-3.3-70B.
-
-**Why Groq:** Free tier is actually free (30 req/min on Llama-3.3-70B), extremely
-fast inference (LPU hardware), no regional restrictions, no `limit: 0` surprises.
-
-### Option B — Google Gemini
-
-Gemini's free tier is now region-dependent — many new accounts show
-`Billing Tier: Free tier` in the AI Studio console but actual per-model
-quotas of `0`. If that happens to you, you'll need to click **"Set up
-billing"** on the API Keys page (you still pay nothing under the free
-usage threshold).
-
-1. Open **https://aistudio.google.com/app/apikey**
-2. Click **Create API Key → Create API key in new project**.
-3. Paste it into `GeminiConfig.kt`:
-
-   ```kotlin
-   const val API_KEY: String = "AIzaSy…your key here…"
-   const val MODEL_NAME: String = "gemini-2.0-flash"   // or gemini-flash-latest, gemini-2.5-flash
-   ```
-
-4. Open `ChatServiceLocator.kt` and switch the default:
-
-   ```kotlin
-   var activeProvider: Provider = Provider.GEMINI
-   ```
-
-5. If the first request returns `HTTP 429 / limit: 0`, click **"Set up
-   billing"** next to your key in AI Studio and rebuild.
-
-**Valid model names on v1beta** (the old `gemini-1.5-flash` is retired and
-returns `404`):
-
-- `gemini-2.0-flash`  — recommended free-tier flagship
-- `gemini-flash-latest`  — rolling alias
-- `gemini-2.5-flash`  — newer, slightly tighter quota
-- `gemini-pro-latest`  — higher quality, smaller free tier
-
-### Option C — your own streaming REST backend
-
-1. Open `ChatEndpoints.kt`:
-
-   ```kotlin
-   const val CHAT_BASE_URL: String = "https://api.mybackend.com/"
-   const val CHAT_PATH: String = "v1/chat"
-   ```
-
-2. Switch the active provider:
-
-   ```kotlin
-   var activeProvider: Provider = Provider.CUSTOM_REST
-   ```
-
-3. Your backend must return line-delimited JSON with `type: "begin" | "item" | "end"`
-   chunks — see the *Custom REST* section further down for the exact shape.
-
-### Switching providers later
-
-All three impls live behind the same `domain/repository/ChatRepository`
-interface, so switching is a one-line change in
-`di/ChatServiceLocator.kt`:
-
-```kotlin
-var activeProvider: Provider = Provider.GROQ     // ⭐ default — free, no card
-// or
-var activeProvider: Provider = Provider.GEMINI   // Google Gemini (may need billing)
-// or
-var activeProvider: Provider = Provider.CUSTOM_REST  // your own backend
-```
-
-The ViewModel, adapters, XML layouts and the entire domain layer are
-untouched — that's the Clean Architecture payoff.
-
------------
-
-https://github.com/user-attachments/assets/d9740295-ab40-478e-88fa-49863cf76ac3
-
------------
+-------------
 
 ## Highlights
 
@@ -269,9 +169,110 @@ AskMeChat/
 └── README.md                                    ← you are here
 ```
 
----
+-----------
+
+https://github.com/user-attachments/assets/d9740295-ab40-478e-88fa-49863cf76ac3
+
+-----------
 
 ## Getting Started
+
+-----------
+
+## 🚀 Quick Start — get an API key, paste, run
+
+The app ships with three swappable providers. Default is **Groq** because it's
+the fastest path to a working demo — truly free, no credit card, works
+everywhere. Follow the three-minute setup for your preferred provider, then
+rebuild.
+
+### Option A — Groq (recommended, default) ⭐
+
+1. Open **https://console.groq.com/keys**
+2. Sign in with **Google, GitHub or email** — no card needed.
+3. Click **Create API Key** → give it a name → **copy the key** (starts with `gsk_…`).
+4. Paste it into `app/src/main/java/com/example/askmechat/data/remote/groq/GroqConfig.kt`:
+
+   ```kotlin
+   const val API_KEY: String = "gsk_…your key here…"
+   const val MODEL_NAME: String = "llama-3.3-70b-versatile"   // or llama-3.1-8b-instant, gemma2-9b-it
+   ```
+
+5. Rebuild and run. The first prompt streams from Llama-3.3-70B.
+
+**Why Groq:** Free tier is actually free (30 req/min on Llama-3.3-70B), extremely
+fast inference (LPU hardware), no regional restrictions, no `limit: 0` surprises.
+
+### Option B — Google Gemini
+
+Gemini's free tier is now region-dependent — many new accounts show
+`Billing Tier: Free tier` in the AI Studio console but actual per-model
+quotas of `0`. If that happens to you, you'll need to click **"Set up
+billing"** on the API Keys page (you still pay nothing under the free
+usage threshold).
+
+1. Open **https://aistudio.google.com/app/apikey**
+2. Click **Create API Key → Create API key in new project**.
+3. Paste it into `GeminiConfig.kt`:
+
+   ```kotlin
+   const val API_KEY: String = "AIzaSy…your key here…"
+   const val MODEL_NAME: String = "gemini-2.0-flash"   // or gemini-flash-latest, gemini-2.5-flash
+   ```
+
+4. Open `ChatServiceLocator.kt` and switch the default:
+
+   ```kotlin
+   var activeProvider: Provider = Provider.GEMINI
+   ```
+
+5. If the first request returns `HTTP 429 / limit: 0`, click **"Set up
+   billing"** next to your key in AI Studio and rebuild.
+
+**Valid model names on v1beta** (the old `gemini-1.5-flash` is retired and
+returns `404`):
+
+- `gemini-2.0-flash`  — recommended free-tier flagship
+- `gemini-flash-latest`  — rolling alias
+- `gemini-2.5-flash`  — newer, slightly tighter quota
+- `gemini-pro-latest`  — higher quality, smaller free tier
+
+### Option C — your own streaming REST backend
+
+1. Open `ChatEndpoints.kt`:
+
+   ```kotlin
+   const val CHAT_BASE_URL: String = "https://api.mybackend.com/"
+   const val CHAT_PATH: String = "v1/chat"
+   ```
+
+2. Switch the active provider:
+
+   ```kotlin
+   var activeProvider: Provider = Provider.CUSTOM_REST
+   ```
+
+3. Your backend must return line-delimited JSON with `type: "begin" | "item" | "end"`
+   chunks — see the *Custom REST* section further down for the exact shape.
+
+### Switching providers later
+
+All three impls live behind the same `domain/repository/ChatRepository`
+interface, so switching is a one-line change in
+`di/ChatServiceLocator.kt`:
+
+```kotlin
+var activeProvider: Provider = Provider.GROQ     // ⭐ default — free, no card
+// or
+var activeProvider: Provider = Provider.GEMINI   // Google Gemini (may need billing)
+// or
+var activeProvider: Provider = Provider.CUSTOM_REST  // your own backend
+```
+
+The ViewModel, adapters, XML layouts and the entire domain layer are
+untouched — that's the Clean Architecture payoff.
+
+---
 
 ### Prerequisites
 
