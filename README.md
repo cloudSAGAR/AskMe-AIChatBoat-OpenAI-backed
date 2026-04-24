@@ -1,7 +1,6 @@
 # AskMeChat
 
 -----------------------
------------
 Created by:  SAGAR RAVAL 
  ||  email: saagar.raval@gmail.com  ||  +91 9824969150
 
