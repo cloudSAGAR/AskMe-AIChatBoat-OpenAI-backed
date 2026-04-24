@@ -10,19 +10,7 @@ by changing a single file.
 <img width="400" height="895" alt="Chat" src="https://github.com/user-attachments/assets/a8243552-1928-4692-9920-74fd8f02a096" />
 
 
----
-
-https://github.com/user-attachments/assets/ef57b26b-a570-4d9c-ae33-0fb6ed97d312
-
 -----------
-
-https://github.com/user-attachments/assets/bf734d10-19b0-4563-83b4-507d41c0f425
-
-----------
-
-https://github.com/user-attachments/assets/bf4f36cd-9b0c-43ea-a4c7-2e8a020cc737
-
-
 
 ## 🚀 Quick Start — get an API key, paste, run
 
@@ -117,7 +105,11 @@ var activeProvider: Provider = Provider.CUSTOM_REST  // your own backend
 The ViewModel, adapters, XML layouts and the entire domain layer are
 untouched — that's the Clean Architecture payoff.
 
----
+-----------
+
+https://github.com/user-attachments/assets/ef57b26b-a570-4d9c-ae33-0fb6ed97d312
+
+-----------
 
 ## Highlights
 
