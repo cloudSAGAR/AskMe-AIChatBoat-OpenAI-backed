@@ -11,8 +11,14 @@ implementation. The UI and streaming behaviour are wrapped around a strict
 Clean Architecture boundary so the app can be extended to any AI provider
 by changing a single file.
 
+```
+AI FIRST MODEL  →  CLEAN ARCHITECTURE  →  COROUTINES  →  ROOM DB  →  JETPACK  →  FLOW
+```
+
 <img width="300" height="625" alt="Splash" src="https://github.com/user-attachments/assets/8ede473e-ca35-45ed-8a37-7968480290c8" />
 <img width="300" height="625" alt="Home" src="https://github.com/user-attachments/assets/1360de9b-da59-4fa6-91b9-de5fa6d9e939" />
+
+## AI OUTPUT
 <img width="380" height="785" alt="Chat" src="https://github.com/user-attachments/assets/a8243552-1928-4692-9920-74fd8f02a096" />
 
 -------------
@@ -35,22 +41,6 @@ by changing a single file.
 - Wake- and Wi-Fi-locks during streaming so long responses survive brief
   backgrounding (graceful no-op if permission is denied).
 - Single-file endpoint configuration — swap providers in seconds.
-
----
-
-## Tech Stack
-
-| Layer            | Technology                                           |
-|------------------|------------------------------------------------------|
-| Language         | Kotlin 2.2.0                                         |
-| Build            | Gradle 8.13, AGP 8.13.2, Kotlin DSL                  |
-| Min / Target SDK | 24 / 36                                              |
-| UI               | View system (Fragment + ViewBinding + DataBinding)   |
-| Async            | Coroutines + Flow                                    |
-| Networking       | Retrofit 2 + OkHttp 4 + Gson                         |
-| DI               | Manual service locator (Hilt-ready)                  |
-| Persistence      | Room 2.6 (scaffolded; not yet used)                  |
-| Misc             | Parcelize, Material 3, ConstraintLayout, RecyclerView |
 
 ---
 
@@ -168,6 +158,21 @@ AskMeChat/
 ├── settings.gradle.kts
 └── README.md                                    ← you are here
 ```
+
+## Tech Stack
+
+| Layer            | Technology                                           |
+|------------------|------------------------------------------------------|
+| Language         | Kotlin 2.2.0                                         |
+| Build            | Gradle 8.13, AGP 8.13.2, Kotlin DSL                  |
+| Min / Target SDK | 24 / 36                                              |
+| UI               | View system (Fragment + ViewBinding + DataBinding)   |
+| Async            | Coroutines + Flow                                    |
+| Networking       | Retrofit 2 + OkHttp 4 + Gson                         |
+| DI               | Manual service locator (Hilt-ready)                  |
+| Persistence      | Room 2.6 (scaffolded; not yet used)                  |
+| Misc             | Parcelize, Material 3, ConstraintLayout, RecyclerView |
+
 
 -----------
 
